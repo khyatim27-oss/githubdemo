@@ -1,129 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Emergency Information - Natural Disasters</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Emergency Information - Natural Disasters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        body {
-            background: #111;
-            color: white;
-        }
+body {
+    background: #111;
+    color: white;
+}
 
-        header {
-            background: #b30000;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
+header {
+    background: #b30000;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        .container {
-            padding: 30px;
-        }
+.container {
+    padding: 30px;
+}
 
-        .section {
-            margin-bottom: 30px;
-            background: #1c1c1c;
-            padding: 20px;
-            border-radius: 8px;
-        }
+.emergency-box {
+    background: #262626;
+    padding: 20px;
+    border-left: 5px solid red;
+    margin-bottom: 20px;
+}
 
-        .section h2 {
-            margin-bottom: 15px;
-            color: #ff4d4d;
-        }
+h2 {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+}
 
-        ul {
-            margin-left: 20px;
-        }
+ul {
+    margin-left: 20px;
+}
 
-        li {
-            margin-bottom: 8px;
-            padding-left: 10px;
-            list-style-type: square;
-        }
+li {
+    margin-bottom: 8px;
+}
 
-        .emergency-box {
-            background: #262626;
-            padding: 20px;
-            border-left: 5px solid red;
-            margin-bottom: 20px;
-        }
+/* Image styling */
+img {
+    margin-top: 10px;
+    border-radius: 8px;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: red;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+/* Google Form container */
+.form-container {
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
 
-        .btn:hover {
-            background: darkred;
-        }
+.form-container h2 {
+    text-align: center;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #000;
-            margin-top: 20px;
-        }
-        
-    </style>
+/* iframe styling */
+iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #000;
+    margin-top: 20px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    🚨 Emergency Information - Natural Disasters
+🚨 Emergency Information - Natural Disasters
 </header>
 
 <div class="container">
 
+    <!-- Emergency Contacts -->
     <div class="emergency-box">
-        <h2><b>📞 Emergency Contact Numbers</b></h2><br>
-         <p><strong>🆘 All in One Emergency Helpline: </strong> 112</p><br>
+        <h2>📞 Emergency Contact Numbers</h2><br>
+        <p><strong>🆘 All in One Emergency Helpline: </strong> 112</p><br>
         <p><strong>🚓 Police: </strong> 100</p><br>
         <p><strong>🚑 Ambulance: </strong> 108</p><br>
         <p><strong>🚒 Fire Brigade: </strong> 101</p><br>
-        <p><strong>🎓 National Disaster Management Authority (NDMA): </strong> 1078</p>
-        Responsible for planning and coordinating disaster management across India.<br><br>
-<img src="ndma.jpeg" alt="NDMA Logo" style="width:20% ;" border-radius: 8px;">
 
-       <br> <p><strong>🧰 NDRF Helpline (Disaster Distress):</strong> 9711077372, 011-24363260</p>
-        Handles rescue operations during floods, cyclones, earthquakes, and other disasters.<br><br>
-        <img src="ndrf.jpeg" alt="NDRF Logo" style="width:20%; border-radius:8px;"><br>
-        
+        <p><strong>🎓 NDMA: </strong> 1078</p>
+        Responsible for disaster management across India.<br>
+        <img src="ndma.jpeg" alt="NDMA" width="400"><br><br>
+
+        <p><strong>🧰 NDRF Helpline:</strong> 9711077372, 011-24363260</p>
+        Handles rescue operations.<br>
+        <img src="ndrf.jpeg" alt="NDRF" width="400">
     </div>
+
+    <!-- Emergency Kit -->
     <div class="emergency-box">
-        <h2><b>🎒 Emergency Kit Contents</b></h2><br>
+        <h2>🎒 Emergency Kit Contents</h2><br>
         <ul>
-            <li>💧Water (1 gallon per person per day)</li>
-            <li>🥫Non-perishable food (3-day supply)</li>
-            <li>🔦Flashlight and extra batteries</li>
-            <li>🩹First aid kit and medications</li>
-            <li>🛠️Whistle and Emergency tools (wrench, pliers, etc.)</li>
-            <li>📂 Important documents (ID, insurance papers) in waterproof cover</li>
+            <li>💧 Water</li>
+            <li>🥫 Food</li>
+            <li>🔦 Flashlight</li>
+            <li>🩹 First Aid Kit</li>
+            <li>🛠️ Emergency Tools</li>
+            <li>📂 Important Documents</li>
         </ul>
     </div>
 
-    <a href="mainpage.html" class="btn">⬅ Back to Home</a>
+    <!-- Google Form Section -->
+    <div class="form-container">
+        <h2>🚨 Disaster Reporting Form</h2>
+
+        <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdzHIit75cuTcXmEjvOYftuVa8v392F68Zhou63alYqJSSjLA/viewform?embedded=true">
+        </iframe>
+    </div>
+
+    <a href="mainpg.html" class="btn">⬅ Back to Home</a>
 
 </div>
 
 <footer>
-    © 2026 Natural Disaster Awareness Project | Stay Safe
+© 2026 Natural Disaster Awareness Project | Stay Safe
 </footer>
 
 </body>
