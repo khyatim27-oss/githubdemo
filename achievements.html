@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Achievements</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        h2 { color: #38bdf8; }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3b82f6;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>🏅 Your Achievements</h2>
+
+    <div id="content"></div>
+
+    <button onclick="goHome()">⬅ Back to Home</button>
+</div>
+
+<script>
+function loadAchievements() {
+    let score = localStorage.getItem("finalScore");
+    let level = localStorage.getItem("level");
+    let badge = localStorage.getItem("badge");
+    let reaction = localStorage.getItem("reaction");
+
+    if(score && badge) {
+        document.getElementById("content").innerHTML = `
+            <h3>🎯 Score: ${score} / 15</h3>
+            <h3>🏆 Level: ${level}</h3>
+            <h3>${badge}</h3>
+            <p>${reaction}</p>
+        `;
+    } else {
+        document.getElementById("content").innerHTML = `
+            <h3>❌ No achievements yet</h3>
+            <p>Complete the quiz to earn badges!</p>
+        `;
+    }
+}
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+// Load automatically
+window.onload = loadAchievements;
+</script>
+
+</body>
+</html>
