@@ -1,54 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <title>Natural Disasters</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3b5998, #6dd5fa);
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background: #2f80ed;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
-<style>
-    body {
-        background: linear-gradient(to right, #1e3c72, #8acbe3);
-        color: #180202;
-    }
-</style>
-<body style="font-family: Arial; text-align:center; margin-top:100px;">
 
-    <h2>Login</h2>
+<body>
 
-    <form onsubmit="return loginUser()">
-        <input type="email" id="email" placeholder="Email" required><br><br>
-        <input type="password" id="password" placeholder="Password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <header>🌍 Natural Disasters Awareness</header>
 
-    <p><a href="signup.html">Create New Account</a></p>
+    <div class="content">
+        <h2>What Are Natural Disasters?</h2>
+        <p>
+            Natural disasters are unexpected events caused by nature that can cause
+            damage to life and property.
+            Examples include Earthquakes, Floods,
+            Cyclones, Wildfires and Volcanic eruptions.
+        </p>
 
+        <p>
+            Learning about natural disasters helps us prepare and respond effectively.
+        </p>
 
+     <!-- Quiz Button -->
+        <a href="learn.html" class="btn">🧩Learn More</a>
+        <a href="quiz1.html" class="btn">📝 Take Quiz</a><br>
+        <a href="emergency.html" class="btn">🚨 Emergency Info</a>
+         <a href="weather.html" class="btn">🌦️ Weather </a>
+         <a href="alert.html" class="btn">⚠️ Alerts </a><br>
+         <a href="actioncard.html" class="btn">📚 Action Cards</a>
+          <a href="didYouKnow.html" class="btn">❓ Did You Know? </a> <br>
+ </div>
+
+<button onclick="goToAchievements()" class = "btn">🏅 View Achievements</button>
 
 <script>
-function loginUser() {
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-
-    let storedUser = localStorage.getItem(email);
-
-    if (!storedUser) {
-        alert("User not found! Please sign up.");
-        return false;
-    }
-
-    let user = JSON.parse(storedUser);
-
-    if (user.password === password) {
-        alert("Login Successful!");
-       window.location.href = "mainpage.html";  // create this page
-
-
-    } else {
-        alert("Incorrect Password!");
-    }
-
-    return false;
+function goToAchievements() {
+    window.location.href = "achievements.html";
 }
 </script>
+
+    
+
+    <footer>
+        © 2026 Natural Disaster Project | Stay Safe 🌎
+    </footer>
 
 </body>
 </html>
