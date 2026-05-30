@@ -1,85 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Live Weather - Disaster Preparedness</title>
+    <title>Live Weather - Pyodide</title>
+
+    <!-- Load Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background: linear-gradient(to right, #4facfe, #85b6e0);
             text-align: center;
             padding: 50px;
             color: white;
         }
 
-        .weather-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            border-radius: 15px;
+        .box {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
             display: inline-block;
-            width: 300px;
         }
 
         input {
             padding: 10px;
-            width: 70%;
             border-radius: 5px;
             border: none;
         }
-
+        .btn:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
         button {
-            padding: 10px 15px;
-            border: none;
+            padding: 10px;
             border-radius: 5px;
-            background-color: #ff9800;
+            border: none;
+            background: rgb(46, 103, 226);
             color: white;
             cursor: pointer;
         }
-
-        button:hover {
-            background-color: #e68900;
-        }
-
-        h2 {
-            margin-top: 20px;
-        }
     </style>
-</head>
-<body>
+    </head>
+<body style="text-align:center; font-family:Arial;">
 
-    <h1>🌦️ Live Weather Report</h1>
+<h1>🌍 Weather Disaster Alert</h1>
 
-    <div class="weather-box">
-        <input type="text" id="city" placeholder="Enter City Name"><br> <br>
-        <button onclick="getWeather()">Check</button>
+<input type="text" id="city" placeholder="Enter city" />
+<br><br>
 
-        <h2 id="result"></h2>
-    </div>
+<button onclick="getWeather()" class="btn">Check Weather</button>
 
-    <script>
-        async function getWeather() {
-            const city = document.getElementById("city").value;
+<p id="output"></p>
 
-            const apiKey = "6cdab2bdd9feeb2e20784aff98e831de"; // 🔴 Paste your API key here
+<!-- Pyodide -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
 
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+<script>
+let pyodide;
 
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+async function loadPyodideAndPackages() {
+    pyodide = await loadPyodide();
+}
+loadPyodideAndPackages();
 
-                if (data.cod === 200) {
-                    document.getElementById("result").innerHTML =
-                        `🌍 City: ${data.name} <br>
-                         🌡️ Temperature: ${data.main.temp} °C <br>
-                         ☁️ Condition: ${data.weather[0].description} <br>
-                         💨 Wind Speed: ${data.wind.speed} m/s`;
-                } else {
-                    document.getElementById("result").innerHTML = "❌ City not found!";
-                }
-            } catch (error) {
-                document.getElementById("result").innerHTML = "⚠️ Error fetching weather data";
-            }
-        }
-    </script>
+async function getWeather() {
+    let city = document.getElementById("city").value;
+
+    // Fetch weather from API (JavaScript side)
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6cdab2bdd9feeb2e20784aff98e831de&units=metric`);
+    let data = await response.json();
+
+    let temp = data.main.temp;
+    let condition = data.weather[0].main;
+    let wind = data.wind.speed;
+
+    // Send data to Python (Pyodide)
+    let result = await pyodide.runPythonAsync(`
+temp = ${temp}
+condition = "${condition}"
+wind = ${wind}
+
+alert = "Normal"
+
+if temp > 40:
+    alert = "🔥 Heatwave Warning!"
+elif "Rain" in condition:
+    alert = "🌧️ Flood Risk!"
+elif wind > 15:
+    alert = "🌪️ Storm Warning!"
+
+alert
+`);
+
+    document.getElementById("output").innerHTML = `
+        <h3>Temperature: ${temp} °C</h3>
+        <h3>Condition: ${condition}</h3>
+        <h3>Wind: ${wind}</h3>
+        <h2 style="color:red;">${result}</h2>
+    `;
+}
+</script>
 
 </body>
+</html>
